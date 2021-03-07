@@ -252,3 +252,5 @@ gradle-app.setting
 **/build/
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,jetbrains,gradle,groovy,maven,java
+# Ignore Gradle build output directory
+build
