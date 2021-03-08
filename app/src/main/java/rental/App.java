@@ -7,7 +7,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
 public class App implements Runnable {
-  private static final int PORT = 8181;
+  private static final int PORT = 8080;
 
   public static void main(String[] args) {
     new App().run();
