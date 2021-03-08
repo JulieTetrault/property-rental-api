@@ -19,7 +19,7 @@ jobs:
           java-version: 1.8
 
       - name: Build
-        run: mvn install -DskipTests
+        run: mvn clean install -DskipTests
 
       - name: CheckStyle
         run: mvn checkstyle:checkstyle
