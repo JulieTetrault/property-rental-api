@@ -13,19 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up JDK 1.8
-        uses: actions/setup-java@v1
+      - name: Run maven test
+        uses: xlui/action-maven-cli@jdk15
         with:
-          java-version: 1.8
-
-      - name: Build
-        run: mvn clean install -DskipTests
-
-      - name: CheckStyle
-        run: mvn checkstyle:checkstyle
-
-      - name: Tests
-        run: mvn surefire:test
+          lifecycle: 'clean package test'
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
