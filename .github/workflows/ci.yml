@@ -1,0 +1,27 @@
+name: Rental API CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run maven test
+        uses: xlui/action-maven-cli@jdk15
+        with:
+          lifecycle: 'clean package test'
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          files: ./app/target/site/jacoco/jacoco.xml
+          name: codecov-umbrella
+          fail_ci_if_error: true
+          verbose: true
