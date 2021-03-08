@@ -18,16 +18,19 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+      - name: Build
+        run: mvn install -DskipTests
 
-      - name: Build with Gradle
-        run: ./gradlew build
+      - name: CheckStyle
+        run: mvn checkstyle:checkstyle
+
+      - name: Tests
+        run: mvn surefire:test
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
-          files: ./app/build/reports/jacoco/test/jacocoTestReport.xml
+          files: ./app/target/site/jacoco/jacoco.xml
           name: codecov-umbrella
           fail_ci_if_error: true
           verbose: true
