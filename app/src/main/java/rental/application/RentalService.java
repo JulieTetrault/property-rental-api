@@ -18,6 +18,13 @@ public class RentalService {
 
   public List<RentalDTO> getAllRentals() {
     List<Rental> rentals =  rentalRepository.getAll();
+
     return rentalAssembler.toDto(rentals);
+  }
+
+  public RentalDTO getRental(String rentalId) {
+    Rental rental = rentalRepository.get(rentalId);
+
+    return rentalAssembler.toDto(rental);
   }
 }
