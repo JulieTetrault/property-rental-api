@@ -1,4 +1,4 @@
-package rental.infrastructure.configuration;
+package rental.infrastructure.rest.configuration;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
