@@ -1,7 +1,9 @@
 package rental.infrastructure.persistence;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +13,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import rental.domain.Rental;
 import rental.infrastructure.utility.CSVFileParser;
-
 
 public class CSVRentalRepositoryTest {
 
@@ -60,10 +61,17 @@ public class CSVRentalRepositoryTest {
   }
 
   @Test
-  public void whenGettingRental_thenShouldReturnRental() {
+  public void givenExistingRental_whenGettingRental_thenShouldReturnRental() {
     Rental actualRental = cvsRentalRepository.get(SOME_RENTAL_ID);
 
     assertEquals(SOME_RENTAL_WITH_ID, actualRental);
+  }
+
+  @Test
+  public void givenNonExistingRental_whenGettingRental_thenShouldThrowRentalNotFoundException() {
+    assertThrows(RentalNotFoundException.class, () -> {
+      cvsRentalRepository.get("someOtherId");
+    });
   }
 }
 

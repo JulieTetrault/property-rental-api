@@ -1,6 +1,7 @@
 package rental.infrastructure.persistence;
 
 import java.util.List;
+import java.util.Optional;
 import javax.inject.Inject;
 import org.apache.commons.csv.CSVRecord;
 import rental.domain.Rental;
@@ -26,10 +27,14 @@ public class CSVRentalRepository implements RentalRepository {
 
   @Override
   public Rental get(String rentalId) {
-    CSVRecord csvRentalRecord =
-        csvRentalRecords.stream().filter(record -> record.get("id").equals(rentalId)).findFirst().get();
+    Optional<CSVRecord> csvRentalRecord =
+        csvRentalRecords.stream().filter(record -> record.get("id").equals(rentalId)).findFirst();
 
-    return csvRentalRecordAssembler.fromRecord(csvRentalRecord);
+    if (csvRentalRecord.isPresent()) {
+      return csvRentalRecordAssembler.fromRecord(csvRentalRecord.get());
+    }
+
+    throw new RentalNotFoundException(rentalId);
   }
 }
 
