@@ -6,8 +6,8 @@ public class AppBinder extends AbstractBinder {
 
   @Override
   protected void configure() {
-    install(new ApplicationBinder());
     install(new PersistenceBinder());
     install(new UtilityBinder());
+    install(new ApplicationBinder());
   }
 }
