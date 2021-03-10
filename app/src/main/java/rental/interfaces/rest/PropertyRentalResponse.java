@@ -2,7 +2,7 @@ package rental.interfaces.rest;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import rental.domain.Rental;
+import rental.application.RentalDTO;
 
 public class PropertyRentalResponse {
 
@@ -15,11 +15,11 @@ public class PropertyRentalResponse {
   public final Integer rating;
 
   @JsonCreator
-  public PropertyRentalResponse(Rental rental) {
-    this.id = rental.getId();
-    this.postalCode = rental.getPostalCode();
-    this.price = rental.getPrice().intValue();
-    this.nbBeds = rental.getNbBeds();
-    this.rating = rental.getRating();
+  public PropertyRentalResponse(RentalDTO rentalDTO) {
+    this.id = rentalDTO.id;
+    this.postalCode = rentalDTO.postalCode;
+    this.price = rentalDTO.price;
+    this.nbBeds = rentalDTO.nbBeds;
+    this.rating = rentalDTO.rating;
   }
 }

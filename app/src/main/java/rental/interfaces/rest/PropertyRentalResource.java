@@ -8,27 +8,27 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import rental.domain.Rental;
-import rental.domain.RentalRepository;
+import rental.application.RentalDTO;
+import rental.application.RentalService;
 
 @Path("/rentals")
 @Produces(MediaType.APPLICATION_JSON)
 public class PropertyRentalResource {
 
-  private final RentalRepository rentalRepository;
+  private final RentalService rentalService;
 
   @Inject
-  public PropertyRentalResource(RentalRepository rentalRepository) {
-    this.rentalRepository = rentalRepository;
+  public PropertyRentalResource(RentalService rentalService) {
+    this.rentalService = rentalService;
   }
 
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   public Response getRentals() {
-    List<Rental> rentals = rentalRepository.getAll();
+    List<RentalDTO> rentalDTOs = rentalService.getAllRentals();
 
     List<PropertyRentalResponse> propertyRentalsResponse =
-        rentals.stream().map(rental -> new PropertyRentalResponse(rental)).collect(
+        rentalDTOs.stream().map(rental -> new PropertyRentalResponse(rental)).collect(
             Collectors.toList());
 
     return Response.status(Response.Status.OK)
