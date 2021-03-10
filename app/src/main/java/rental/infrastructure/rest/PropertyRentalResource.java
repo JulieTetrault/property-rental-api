@@ -1,4 +1,4 @@
-package rental.interfaces.rest;
+package rental.infrastructure.rest;
 
 import java.util.List;
 import java.util.stream.Collectors;
