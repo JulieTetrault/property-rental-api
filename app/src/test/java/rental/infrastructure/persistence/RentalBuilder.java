@@ -1,7 +1,7 @@
 package rental.infrastructure.persistence;
 
 import java.math.BigDecimal;
-import rental.domain.Rental;
+import rental.domain.rental.Rental;
 
 public class RentalBuilder {
 

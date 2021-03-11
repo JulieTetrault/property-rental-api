@@ -1,9 +1,10 @@
-package rental.domain;
+package rental.domain.rental;
 
 import java.util.List;
 
+
 public interface RentalRepository {
-  List<Rental> getAll();
+  List<Rental> getAll(RentalQuery rentalQuery);
 
   Rental get(String rentalId);
 }

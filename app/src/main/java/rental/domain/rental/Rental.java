@@ -1,4 +1,4 @@
-package rental.domain;
+package rental.domain.rental;
 
 import java.math.BigDecimal;
 
