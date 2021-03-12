@@ -2,7 +2,7 @@ package rental.application;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import rental.domain.Rental;
+import rental.domain.rental.Rental;
 
 public class RentalAssembler {
 

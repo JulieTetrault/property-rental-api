@@ -11,7 +11,8 @@ import java.util.List;
 import org.apache.commons.csv.CSVRecord;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import rental.domain.Rental;
+import rental.domain.rental.Rental;
+import rental.domain.rental.RentalQuery;
 import rental.infrastructure.utility.CSVFileParser;
 
 public class CSVRentalRepositoryTest {
@@ -23,6 +24,7 @@ public class CSVRentalRepositoryTest {
   private static final Rental SOME_RENTAL_WITH_ID = new RentalBuilder().build();
   private static final List<Rental> SOME_RENTALS = new ArrayList<>(
       Arrays.asList(SOME_RENTAL_WITH_ID, new RentalBuilder().build()));
+  private static final RentalQuery SOME_RENTAL_QUERY = new RentalQuery.RentalQueryBuilder().build();
 
   private CSVRentalRecordAssembler csvRentalRecordAssembler;
   private CSVRentalRepository cvsRentalRepository;
@@ -41,14 +43,14 @@ public class CSVRentalRepositoryTest {
 
   @Test
   public void whenGettingAllRentals_thenShouldAssembleRentalsFromCSVRentalRecords() {
-    cvsRentalRepository.getAll();
+    cvsRentalRepository.getAll(SOME_RENTAL_QUERY);
 
     verify(csvRentalRecordAssembler).fromRecord(SOME_CSV_RENTAL_RECORDS);
   }
 
   @Test
   public void whenGettingAllRentals_thenShouldReturnAllRentals() {
-    List<Rental> actualRentals = cvsRentalRepository.getAll();
+    List<Rental> actualRentals = cvsRentalRepository.getAll(SOME_RENTAL_QUERY);
 
     assertEquals(SOME_RENTALS, actualRentals);
   }

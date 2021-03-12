@@ -2,8 +2,9 @@ package rental.application;
 
 import java.util.List;
 import javax.inject.Inject;
-import rental.domain.Rental;
-import rental.domain.RentalRepository;
+import rental.domain.rental.RentalQuery;
+import rental.domain.rental.Rental;
+import rental.domain.rental.RentalRepository;
 
 public class RentalService {
 
@@ -16,8 +17,8 @@ public class RentalService {
     this.rentalAssembler = rentalAssembler;
   }
 
-  public List<RentalDTO> getAllRentals() {
-    List<Rental> rentals =  rentalRepository.getAll();
+  public List<RentalDTO> getAllRentals(RentalQuery rentalQuery) {
+    List<Rental> rentals =  rentalRepository.getAll(rentalQuery);
 
     return rentalAssembler.toDto(rentals);
   }

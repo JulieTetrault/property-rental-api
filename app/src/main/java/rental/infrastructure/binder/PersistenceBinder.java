@@ -1,7 +1,7 @@
 package rental.infrastructure.binder;
 
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
-import rental.domain.RentalRepository;
+import rental.domain.rental.RentalRepository;
 import rental.infrastructure.persistence.CSVRentalRecordAssembler;
 import rental.infrastructure.persistence.CSVRentalRepository;
 

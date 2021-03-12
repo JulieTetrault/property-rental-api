@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.apache.commons.csv.CSVRecord;
-import rental.domain.Rental;
+import rental.domain.rental.Rental;
 
 public class CSVRentalRecordAssembler {
 
