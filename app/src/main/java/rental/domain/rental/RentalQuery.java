@@ -68,12 +68,13 @@ public class RentalQuery {
     RentalQuery that = (RentalQuery) o;
     return Objects.equals(this.minNbBeds, that.minNbBeds)
         && Objects.equals(this.minPrice, that.minPrice)
-        && Objects.equals(this.maxPrice, that.maxPrice);
+        && Objects.equals(this.maxPrice, that.maxPrice)
+        && Objects.equals(this.postalCodePattern, that.postalCodePattern);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(minNbBeds, minPrice, maxPrice);
+    return Objects.hash(minNbBeds, minPrice, maxPrice, postalCodePattern);
   }
 
   public static class RentalQueryBuilder {
