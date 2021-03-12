@@ -1,9 +1,9 @@
 package rental.infrastructure.persistence;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.apache.commons.csv.CSVRecord;
+import rental.domain.Money;
 import rental.domain.rental.Rental;
 import rental.domain.rental.RentalIdentifier;
 import rental.domain.rental.RentalRating;
@@ -15,7 +15,7 @@ public class CSVRentalRecordAssembler {
         RentalIdentifier.fromString(csvRentalRecord.get("id")),
         csvRentalRecord.get("city"),
         csvRentalRecord.get("postalcode"),
-        new BigDecimal(csvRentalRecord.get("price")),
+        new Money(Integer.parseInt(csvRentalRecord.get("price"))),
         Integer.parseInt(csvRentalRecord.get("nb_beds")),
         Integer.parseInt(csvRentalRecord.get("nb_baths")),
         csvRentalRecord.get("owner"),

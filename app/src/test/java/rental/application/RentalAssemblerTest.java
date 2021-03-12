@@ -35,7 +35,7 @@ public class RentalAssemblerTest {
     assertEquals(rental.getId(), rentalDTO.id);
     assertEquals(rental.getCity(), rentalDTO.city);
     assertEquals(rental.getPostalCode(), rentalDTO.postalCode);
-    assertEquals(rental.getPrice().intValue(), rentalDTO.price);
+    assertEquals(rental.getPrice().toInt(), rentalDTO.price);
     assertEquals(rental.getNbBeds(), rentalDTO.nbBeds);
     assertEquals(rental.getNbBaths(), rentalDTO.nbBaths);
     assertEquals(rental.getOwner(), rentalDTO.owner);

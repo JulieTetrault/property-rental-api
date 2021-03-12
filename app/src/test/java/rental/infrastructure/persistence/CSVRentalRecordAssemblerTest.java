@@ -3,13 +3,13 @@ package rental.infrastructure.persistence;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.commons.csv.CSVRecord;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import rental.domain.Money;
 import rental.domain.rental.Rental;
 import rental.domain.rental.RentalIdentifier;
 import rental.domain.rental.RentalRating;
@@ -39,7 +39,7 @@ public class CSVRentalRecordAssemblerTest {
     assertEquals(RentalIdentifier.fromString(csvRentalRecord.get("id")), rental.getId());
     assertEquals(csvRentalRecord.get("city"), rental.getCity());
     assertEquals(csvRentalRecord.get("postalcode"), rental.getPostalCode());
-    assertEquals(new BigDecimal(csvRentalRecord.get("price")), rental.getPrice());
+    assertEquals(new Money(Integer.parseInt(csvRentalRecord.get("price"))), rental.getPrice());
     assertEquals(Integer.parseInt(csvRentalRecord.get("nb_beds")), rental.getNbBeds());
     assertEquals(Integer.parseInt(csvRentalRecord.get("nb_baths")), rental.getNbBaths());
     assertEquals(csvRentalRecord.get("owner"), rental.getOwner());

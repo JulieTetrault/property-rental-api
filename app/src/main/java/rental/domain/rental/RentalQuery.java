@@ -3,12 +3,13 @@ package rental.domain.rental;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import rental.domain.Money;
 
 public class RentalQuery {
 
   private final Integer minNbBeds;
-  private final Integer minPrice;
-  private final Integer maxPrice;
+  private final Money minPrice;
+  private final Money maxPrice;
   private final String postalCodePattern;
 
   private RentalQuery(RentalQueryBuilder builder) {
@@ -34,11 +35,11 @@ public class RentalQuery {
     boolean isMaxPriceValid = true;
 
     if (minPrice != null) {
-      isMinPriceValid = rental.getPrice().intValue() > minPrice;
+      isMinPriceValid = rental.getPrice().isGreaterThan(minPrice);
     }
 
     if (maxPrice != null) {
-      isMaxPriceValid = rental.getPrice().intValue() < maxPrice;
+      isMaxPriceValid = rental.getPrice().isLessThan(maxPrice);
     }
 
     return isMinPriceValid && isMaxPriceValid;
@@ -76,8 +77,8 @@ public class RentalQuery {
   public static class RentalQueryBuilder {
 
     private Integer minNbBeds;
-    private Integer minPrice;
-    private Integer maxPrice;
+    private Money minPrice;
+    private Money maxPrice;
     private String postalCodePattern;
 
     public RentalQueryBuilder witMinNbBeds(Integer minNbBeds) {
@@ -87,8 +88,8 @@ public class RentalQuery {
     }
 
     public RentalQueryBuilder withPriceRange(Integer minPrice, Integer maxPrice) {
-      this.minPrice = minPrice;
-      this.maxPrice = maxPrice;
+      this.minPrice = new Money(minPrice);
+      this.maxPrice = new Money(maxPrice);
 
       return this;
     }
