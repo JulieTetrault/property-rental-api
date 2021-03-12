@@ -13,7 +13,7 @@ public class Rental {
   private String owner;
   private RentalRating rating;
   private String description;
-
+  
   public Rental(RentalIdentifier id, String city, String postalCode, Money price, Integer nbBeds, Integer nbBaths,
                 String owner, RentalRating rating, String description) {
     this.id = id;
