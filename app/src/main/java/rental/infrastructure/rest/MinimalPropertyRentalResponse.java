@@ -2,6 +2,7 @@ package rental.infrastructure.rest;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Objects;
 import rental.application.RentalDTO;
 
 public class MinimalPropertyRentalResponse {
@@ -21,5 +22,28 @@ public class MinimalPropertyRentalResponse {
     this.price = rentalDTO.price;
     this.nbBeds = rentalDTO.nbBeds;
     this.rating = rentalDTO.rating;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    MinimalPropertyRentalResponse that = (MinimalPropertyRentalResponse) o;
+    return Objects.equals(this.id, that.id)
+        && Objects.equals(this.postalCode, that.postalCode)
+        && Objects.equals(this.price, that.price)
+        && Objects.equals(this.nbBeds, that.nbBeds)
+        && Objects.equals(this.rating, that.rating);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, postalCode, price, nbBeds, rating);
   }
 }

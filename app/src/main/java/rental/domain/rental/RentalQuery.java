@@ -30,15 +30,18 @@ public class RentalQuery {
   }
 
   private boolean isPriceValid(Rental rental) {
+    boolean isMinPriceValid = true;
+    boolean isMaxPriceValid = true;
+
     if (minPrice != null) {
-      return rental.getPrice().intValue() > minPrice;
+      isMinPriceValid = rental.getPrice().intValue() > minPrice;
     }
 
     if (maxPrice != null) {
-      return rental.getPrice().intValue() < maxPrice;
+      isMaxPriceValid = rental.getPrice().intValue() < maxPrice;
     }
 
-    return true;
+    return isMinPriceValid && isMaxPriceValid;
   }
 
   private boolean isPostalCodeValid(Rental rental) {
@@ -65,12 +68,13 @@ public class RentalQuery {
     RentalQuery that = (RentalQuery) o;
     return Objects.equals(this.minNbBeds, that.minNbBeds)
         && Objects.equals(this.minPrice, that.minPrice)
-        && Objects.equals(this.maxPrice, that.maxPrice);
+        && Objects.equals(this.maxPrice, that.maxPrice)
+        && Objects.equals(this.postalCodePattern, that.postalCodePattern);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(minNbBeds, minPrice, maxPrice);
+    return Objects.hash(minNbBeds, minPrice, maxPrice, postalCodePattern);
   }
 
   public static class RentalQueryBuilder {

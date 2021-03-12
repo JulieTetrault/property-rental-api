@@ -27,14 +27,14 @@ public class PropertyRentalResource {
                              @QueryParam("min_price") Integer minPrice,
                              @QueryParam("max_price") Integer maxPrice) {
     RentalQuery rentalQuery =
-        new RentalQuery.RentalQueryBuilder().witMinNbBeds(minNbBeds).withPriceRange(minPrice, maxPrice)
-            .withPostalCodePattern(postalCode)
+        new RentalQuery.RentalQueryBuilder().witMinNbBeds(minNbBeds).withPostalCodePattern(postalCode)
+            .withPriceRange(minPrice, maxPrice)
             .build();
 
-    List<RentalDTO> rentalDTOs = rentalService.getAllRentals(rentalQuery);
+    List<RentalDTO> rentalDTOs = rentalService.getRentals(rentalQuery);
 
     List<MinimalPropertyRentalResponse> propertyRentalsResponse =
-        rentalDTOs.stream().map(rental -> new MinimalPropertyRentalResponse(rental)).collect(
+        rentalDTOs.stream().map(MinimalPropertyRentalResponse::new).collect(
             Collectors.toList());
 
     return Response.status(Response.Status.OK)

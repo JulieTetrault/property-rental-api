@@ -23,14 +23,14 @@ public class CSVRentalRepository implements RentalRepository {
   }
 
   @Override
-  public List<Rental> getAll(RentalQuery rentalQuery) {
+  public List<Rental> fetchAll(RentalQuery rentalQuery) {
     List<Rental> rentals = csvRentalRecordAssembler.fromRecord(csvRentalRecords);
 
     return rentals.stream().filter(rentalQuery::apply).collect(Collectors.toList());
   }
 
   @Override
-  public Rental get(String rentalId) {
+  public Rental fetch(String rentalId) {
     Optional<CSVRecord> csvRentalRecord =
         csvRentalRecords.stream().filter(record -> record.get("id").equals(rentalId)).findFirst();
 

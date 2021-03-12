@@ -1,5 +1,6 @@
-package rental.infrastructure.persistence;
+package utility;
 
+import com.github.javafaker.Faker;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.HashMap;
@@ -10,22 +11,22 @@ import org.apache.commons.csv.CSVRecord;
 
 public class CSVRecordBuilder {
 
-  private static final String SOME_ID = "id";
-  private static final String SOME_CITY = "city";
-  private static final String SOME_POSTAL_CODE = "postalCode";
-  private static final String SOME_PRICE = "30";
-  private static final String SOME_NB_BEDS = "4";
-  private static final String SOME_NB_BATHS = "3";
-  private static final String SOME_OWNER = "owner";
+  private static final String SOME_ID = new Faker().internet().uuid();
+  private static final String SOME_CITY = new Faker().address().city();
+  private static final String SOME_POSTAL_CODE = new Faker().address().zipCode();
+  private static final String SOME_PRICE = new Faker().random().nextInt(50, 300).toString();
+  private static final String SOME_NB_BEDS = new Faker().random().nextInt(1, 10).toString();
+  private static final String SOME_NB_BATHS = new Faker().random().nextInt(1, 10).toString();
+  private static final String SOME_OWNER = new Faker().name().fullName();;
   private static final String SOME_RATING = "2";
-  private static final String SOME_DESCRIPTION = "description";
+  private static final String SOME_DESCRIPTION = new Faker().lorem().paragraph();
 
   Map<String, String> csvRecordValues = new HashMap<>();
 
   public CSVRecordBuilder() {
     csvRecordValues.put("id", SOME_ID);
     csvRecordValues.put("city", SOME_CITY);
-    csvRecordValues.put("postalCode", SOME_POSTAL_CODE);
+    csvRecordValues.put("postalcode", SOME_POSTAL_CODE);
     csvRecordValues.put("price", SOME_PRICE);
     csvRecordValues.put("nb_beds", SOME_NB_BEDS);
     csvRecordValues.put("nb_baths", SOME_NB_BATHS);
@@ -36,6 +37,7 @@ public class CSVRecordBuilder {
 
   public CSVRecordBuilder withId(String id) {
     csvRecordValues.put("id", id);
+
     return this;
   }
 
