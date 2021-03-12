@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import rental.application.RentalDTO;
-import rental.application.RentalDTOBuilder;
+import utility.RentalDTOBuilder;
 import rental.application.RentalService;
 import rental.domain.rental.RentalQuery;
 
@@ -29,7 +29,7 @@ public class PropertyRentalResourceTest {
   @BeforeEach
   public void setUp() {
     rentalService = mock(RentalService.class);
-    when(rentalService.getAllRentals(any())).thenReturn(SOME_RENTAL_DTOS);
+    when(rentalService.getRentals(any())).thenReturn(SOME_RENTAL_DTOS);
     when(rentalService.getRental(SOME_RENTAL_ID)).thenReturn(SOME_RENTAL_DTO_WITH_ID);
 
     propertyRentalResource = new PropertyRentalResource(rentalService);
@@ -42,7 +42,7 @@ public class PropertyRentalResourceTest {
     RentalQuery rentalQuery = new RentalQuery.RentalQueryBuilder().witMinNbBeds(SOME_MIN_NB_NUMBER)
         .withPriceRange(SOME_MIN_PRICE, SOME_MAX_PRICE).build();
 
-    verify(rentalService).getAllRentals(rentalQuery);
+    verify(rentalService).getRentals(rentalQuery);
   }
 
   @Test

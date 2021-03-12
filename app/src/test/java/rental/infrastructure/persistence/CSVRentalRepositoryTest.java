@@ -43,28 +43,28 @@ public class CSVRentalRepositoryTest {
 
   @Test
   public void whenGettingAllRentals_thenShouldAssembleRentalsFromCSVRentalRecords() {
-    cvsRentalRepository.getAll(SOME_RENTAL_QUERY);
+    cvsRentalRepository.fetchAll(SOME_RENTAL_QUERY);
 
     verify(csvRentalRecordAssembler).fromRecord(SOME_CSV_RENTAL_RECORDS);
   }
 
   @Test
   public void whenGettingAllRentals_thenShouldReturnAllRentals() {
-    List<Rental> actualRentals = cvsRentalRepository.getAll(SOME_RENTAL_QUERY);
+    List<Rental> actualRentals = cvsRentalRepository.fetchAll(SOME_RENTAL_QUERY);
 
     assertEquals(SOME_RENTALS, actualRentals);
   }
 
   @Test
   public void givenExistingRental_whenGettingRental_thenShouldAssembleRentalFromCorrespondingCSVRentalRecord() {
-    cvsRentalRepository.get(SOME_RENTAL_ID);
+    cvsRentalRepository.fetch(SOME_RENTAL_ID);
 
     verify(csvRentalRecordAssembler).fromRecord(SOME_CSV_RENTAL_RECORD_WITH_ID);
   }
 
   @Test
   public void givenExistingRental_whenGettingRental_thenShouldReturnRental() {
-    Rental actualRental = cvsRentalRepository.get(SOME_RENTAL_ID);
+    Rental actualRental = cvsRentalRepository.fetch(SOME_RENTAL_ID);
 
     assertEquals(SOME_RENTAL_WITH_ID, actualRental);
   }
@@ -72,7 +72,7 @@ public class CSVRentalRepositoryTest {
   @Test
   public void givenNonExistingRental_whenGettingRental_thenShouldThrowRentalNotFoundException() {
     assertThrows(RentalNotFoundException.class, () -> {
-      cvsRentalRepository.get("someOtherId");
+      cvsRentalRepository.fetch("someOtherId");
     });
   }
 }

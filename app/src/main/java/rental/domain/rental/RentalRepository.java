@@ -4,8 +4,7 @@ import java.util.List;
 
 
 public interface RentalRepository {
-  List<Rental> getAll(RentalQuery rentalQuery);
+  List<Rental> fetchAll(RentalQuery rentalQuery);
 
-  Rental get(String rentalId);
+  Rental fetch(String rentalId);
 }
-

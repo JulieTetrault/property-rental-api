@@ -31,7 +31,7 @@ public class PropertyRentalResource {
             .withPostalCodePattern(postalCode)
             .build();
 
-    List<RentalDTO> rentalDTOs = rentalService.getAllRentals(rentalQuery);
+    List<RentalDTO> rentalDTOs = rentalService.getRentals(rentalQuery);
 
     List<MinimalPropertyRentalResponse> propertyRentalsResponse =
         rentalDTOs.stream().map(rental -> new MinimalPropertyRentalResponse(rental)).collect(
