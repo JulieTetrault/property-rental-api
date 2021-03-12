@@ -1,4 +1,4 @@
-package rental.domain;
+package rental.domain.rental;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.github.javafaker.Faker;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
-import rental.domain.rental.Rental;
-import rental.domain.rental.RentalQuery;
 import utility.RentalBuilder;
 
 public class RentalQueryTest {
@@ -17,7 +15,6 @@ public class RentalQueryTest {
   private static final Integer SOME_MINIMUM_PRICE = 50;
   private static final Integer SOME_MAXIMUM_PRICE = 100;
   private static final String SOME_POSTAL_CODE_PATTERN = "G3A__4";
-
 
   @Test
   public void givenRentalWithNumberOfBedsAboveMinimumNumberOfBeds_whenApplyingRentalQuery_thenShouldReturnTrue() {

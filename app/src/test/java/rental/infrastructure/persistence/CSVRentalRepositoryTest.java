@@ -13,6 +13,7 @@ import org.apache.commons.csv.CSVRecord;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import rental.domain.rental.Rental;
+import rental.domain.rental.RentalIdentifier;
 import rental.domain.rental.RentalQuery;
 import rental.infrastructure.utility.CSVFileParser;
 import utility.CSVRecordBuilder;
@@ -54,7 +55,7 @@ public class CSVRentalRepositoryTest {
 
   @Test
   public void givenExistingRentalWithID_whenFetchingRental_thenShouldAssembleRentalAndReturnIt() {
-    Rental actualRental = cvsRentalRepository.fetch(SOME_RENTAL_ID);
+    Rental actualRental = cvsRentalRepository.fetch(RentalIdentifier.fromString(SOME_RENTAL_ID));
 
     verify(csvRentalRecordAssembler).fromRecord(SOME_CSV_RENTAL_RECORD);
     assertEquals(SOME_RENTAL, actualRental);
@@ -63,7 +64,7 @@ public class CSVRentalRepositoryTest {
   @Test
   public void givenNonExistingRentalWithID_whenFetchingRental_thenShouldThrowRentalNotFoundException() {
     assertThrows(RentalNotFoundException.class, () -> {
-      cvsRentalRepository.fetch(new Faker().internet().uuid());
+      cvsRentalRepository.fetch(RentalIdentifier.fromString(new Faker().internet().uuid()));
     });
   }
 }

@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import rental.domain.rental.RentalRating;
 
 public class CSVRecordBuilder {
 
@@ -18,7 +19,7 @@ public class CSVRecordBuilder {
   private static final String SOME_NB_BEDS = new Faker().random().nextInt(1, 10).toString();
   private static final String SOME_NB_BATHS = new Faker().random().nextInt(1, 10).toString();
   private static final String SOME_OWNER = new Faker().name().fullName();;
-  private static final String SOME_RATING = "2";
+  private static final String SOME_RATING = RentalRating.FOUR.toInt().toString();
   private static final String SOME_DESCRIPTION = new Faker().lorem().paragraph();
 
   Map<String, String> csvRecordValues = new HashMap<>();

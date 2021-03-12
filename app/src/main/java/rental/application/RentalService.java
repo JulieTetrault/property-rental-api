@@ -3,6 +3,7 @@ package rental.application;
 import java.util.List;
 import javax.inject.Inject;
 import rental.domain.rental.Rental;
+import rental.domain.rental.RentalIdentifier;
 import rental.domain.rental.RentalQuery;
 import rental.domain.rental.RentalRepository;
 
@@ -23,7 +24,7 @@ public class RentalService {
     return rentalAssembler.toDto(rentals);
   }
 
-  public RentalDTO getRental(String rentalId) {
+  public RentalDTO getRental(RentalIdentifier rentalId) {
     Rental rental = rentalRepository.fetch(rentalId);
 
     return rentalAssembler.toDto(rental);

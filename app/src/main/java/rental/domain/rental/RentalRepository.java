@@ -6,5 +6,5 @@ public interface RentalRepository {
 
   List<Rental> fetchAll(RentalQuery rentalQuery);
 
-  Rental fetch(String rentalId);
+  Rental fetch(RentalIdentifier rentalId);
 }

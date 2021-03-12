@@ -28,16 +28,12 @@ public class PropertyRentalResponse {
     this.owner = rentalDTO.owner;
     this.nbBeds = rentalDTO.nbBeds;
     this.nbBaths = rentalDTO.nbBaths;
-    this.rating = rentalDTO.rating;
+    this.rating = rentalDTO.rating.toInt();
   }
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-
-    if (o == null || getClass() != o.getClass()) {
+    if (!(o instanceof PropertyRentalResponse)) {
       return false;
     }
 

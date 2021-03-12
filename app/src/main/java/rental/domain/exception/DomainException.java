@@ -1,11 +1,11 @@
-package rental.infrastructure.exception;
+package rental.domain.exception;
 
-public class InfrastructureException extends RuntimeException {
+public class DomainException extends RuntimeException {
 
   private final String code;
   private final String message;
 
-  public InfrastructureException(String code, String message) {
+  public DomainException(String code, String message) {
     this.code = code;
     this.message = message;
   }

@@ -6,11 +6,13 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 import org.apache.commons.csv.CSVRecord;
 import rental.domain.rental.Rental;
+import rental.domain.rental.RentalIdentifier;
 import rental.domain.rental.RentalQuery;
 import rental.domain.rental.RentalRepository;
 import rental.infrastructure.utility.CSVFileParser;
 
 public class CSVRentalRepository implements RentalRepository {
+
   public static final String FILENAME = "rentals.csv";
 
   private final CSVRentalRecordAssembler csvRentalRecordAssembler;
@@ -30,9 +32,10 @@ public class CSVRentalRepository implements RentalRepository {
   }
 
   @Override
-  public Rental fetch(String rentalId) {
+  public Rental fetch(RentalIdentifier rentalId) {
     Optional<CSVRecord> csvRentalRecord =
-        csvRentalRecords.stream().filter(record -> record.get("id").equals(rentalId)).findFirst();
+        csvRentalRecords.stream().filter(record -> RentalIdentifier.fromString(record.get("id"))
+            .equals(rentalId)).findFirst();
 
     if (csvRentalRecord.isPresent()) {
       return csvRentalRecordAssembler.fromRecord(csvRentalRecord.get());
@@ -41,4 +44,3 @@ public class CSVRentalRepository implements RentalRepository {
     throw new RentalNotFoundException(rentalId);
   }
 }
-

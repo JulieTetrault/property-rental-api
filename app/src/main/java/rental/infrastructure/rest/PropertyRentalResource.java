@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import rental.application.RentalDTO;
 import rental.application.RentalService;
+import rental.domain.rental.RentalIdentifier;
 import rental.domain.rental.RentalQuery;
 
 @Path("/rentals")
@@ -44,7 +45,7 @@ public class PropertyRentalResource {
   @GET
   @Path("{id}")
   public Response getRental(@PathParam("id") String rentalId) {
-    RentalDTO rentalDTO = rentalService.getRental(rentalId);
+    RentalDTO rentalDTO = rentalService.getRental(RentalIdentifier.fromString(rentalId));
 
     PropertyRentalResponse propertyRentalResponse = new PropertyRentalResponse(rentalDTO);
 

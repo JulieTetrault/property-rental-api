@@ -4,18 +4,18 @@ import java.math.BigDecimal;
 
 public class Rental {
 
-  private String id;
+  private RentalIdentifier id;
   private String city;
   private String postalCode;
   private BigDecimal price;
   private Integer nbBeds;
   private Integer nbBaths;
   private String owner;
-  private Integer rating;
+  private RentalRating rating;
   private String description;
 
-  public Rental(String id, String city, String postalCode, BigDecimal price, Integer nbBeds, Integer nbBaths,
-                String owner, Integer rating, String description) {
+  public Rental(RentalIdentifier id, String city, String postalCode, BigDecimal price, Integer nbBeds, Integer nbBaths,
+                String owner, RentalRating rating, String description) {
     this.id = id;
     this.city = city;
     this.postalCode = postalCode;
@@ -27,7 +27,7 @@ public class Rental {
     this.description = description;
   }
 
-  public String getId() {
+  public RentalIdentifier getId() {
     return this.id;
   }
 
@@ -55,7 +55,7 @@ public class Rental {
     return this.owner;
   }
 
-  public Integer getRating() {
+  public RentalRating getRating() {
     return this.rating;
   }
 
