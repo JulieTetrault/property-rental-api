@@ -14,6 +14,8 @@ import org.junit.jupiter.api.Test;
 import rental.domain.rental.Rental;
 import rental.domain.rental.RentalQuery;
 import rental.infrastructure.utility.CSVFileParser;
+import utility.CSVRecordBuilder;
+import utility.RentalBuilder;
 
 public class CSVRentalRepositoryTest {
 

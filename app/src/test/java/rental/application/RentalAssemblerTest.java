@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import rental.domain.rental.Rental;
-import rental.infrastructure.persistence.RentalBuilder;
+import utility.RentalBuilder;
 
 public class RentalAssemblerTest {
 
@@ -52,7 +52,7 @@ public class RentalAssemblerTest {
 
   private void assertRentalsDTOCorrectlyAssembled(List<RentalDTO> rentalsDTO) {
     for (int index = 0; index < rentalsDTO.size(); index++) {
-      assertRentalDTOCorrectlyAssembled(RentalAssemblerTest.SOME_RENTALS.get(index), rentalsDTO.get(index));
+      assertRentalDTOCorrectlyAssembled(SOME_RENTALS.get(index), rentalsDTO.get(index));
     }
   }
 }

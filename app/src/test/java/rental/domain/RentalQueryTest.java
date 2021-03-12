@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import rental.domain.rental.Rental;
 import rental.domain.rental.RentalQuery;
-import rental.infrastructure.persistence.RentalBuilder;
+import utility.RentalBuilder;
 
 public class RentalQueryTest {
 

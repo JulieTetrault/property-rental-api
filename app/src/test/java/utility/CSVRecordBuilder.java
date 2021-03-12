@@ -1,4 +1,4 @@
-package rental.infrastructure.persistence;
+package utility;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -25,7 +25,7 @@ public class CSVRecordBuilder {
   public CSVRecordBuilder() {
     csvRecordValues.put("id", SOME_ID);
     csvRecordValues.put("city", SOME_CITY);
-    csvRecordValues.put("postalCode", SOME_POSTAL_CODE);
+    csvRecordValues.put("postalcode", SOME_POSTAL_CODE);
     csvRecordValues.put("price", SOME_PRICE);
     csvRecordValues.put("nb_beds", SOME_NB_BEDS);
     csvRecordValues.put("nb_baths", SOME_NB_BATHS);

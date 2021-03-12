@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import rental.domain.rental.Rental;
 import rental.domain.rental.RentalQuery;
 import rental.domain.rental.RentalRepository;
-import rental.infrastructure.persistence.RentalBuilder;
+import utility.RentalBuilder;
 import utility.RentalDTOBuilder;
 
 public class RentalServiceTest {

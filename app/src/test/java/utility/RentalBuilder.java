@@ -1,4 +1,4 @@
-package rental.infrastructure.persistence;
+package utility;
 
 import com.github.javafaker.Faker;
 import java.math.BigDecimal;
