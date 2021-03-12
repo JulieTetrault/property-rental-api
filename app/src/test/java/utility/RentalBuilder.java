@@ -8,7 +8,7 @@ import rental.domain.rental.RentalRating;
 
 public class RentalBuilder {
 
-  private static final RentalIdentifier SOME_ID = RentalIdentifier.from(new Faker().internet().uuid());
+  private static final RentalIdentifier SOME_ID = RentalIdentifier.fromString(new Faker().internet().uuid());
   private static final String SOME_CITY = new Faker().address().city();
   private static final String SOME_POSTAL_CODE = new Faker().address().zipCode();
   private static final BigDecimal SOME_PRICE = new BigDecimal(30);

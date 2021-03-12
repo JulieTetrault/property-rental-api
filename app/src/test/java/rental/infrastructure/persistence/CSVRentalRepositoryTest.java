@@ -55,7 +55,7 @@ public class CSVRentalRepositoryTest {
 
   @Test
   public void givenExistingRentalWithID_whenFetchingRental_thenShouldAssembleRentalAndReturnIt() {
-    Rental actualRental = cvsRentalRepository.fetch(RentalIdentifier.from(SOME_RENTAL_ID));
+    Rental actualRental = cvsRentalRepository.fetch(RentalIdentifier.fromString(SOME_RENTAL_ID));
 
     verify(csvRentalRecordAssembler).fromRecord(SOME_CSV_RENTAL_RECORD);
     assertEquals(SOME_RENTAL, actualRental);
@@ -64,7 +64,7 @@ public class CSVRentalRepositoryTest {
   @Test
   public void givenNonExistingRentalWithID_whenFetchingRental_thenShouldThrowRentalNotFoundException() {
     assertThrows(RentalNotFoundException.class, () -> {
-      cvsRentalRepository.fetch(RentalIdentifier.from(new Faker().internet().uuid()));
+      cvsRentalRepository.fetch(RentalIdentifier.fromString(new Faker().internet().uuid()));
     });
   }
 }

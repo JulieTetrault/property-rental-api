@@ -36,7 +36,7 @@ public class PropertyRentalResourceTest {
   public void setUp() {
     rentalService = mock(RentalService.class);
     when(rentalService.getRentals(any())).thenReturn(SOME_RENTALS_DTO);
-    when(rentalService.getRental(RentalIdentifier.from(SOME_RENTAL_ID))).thenReturn(SOME_RENTAL_DTO);
+    when(rentalService.getRental(RentalIdentifier.fromString(SOME_RENTAL_ID))).thenReturn(SOME_RENTAL_DTO);
 
     propertyRentalResource = new PropertyRentalResource(rentalService);
   }
@@ -72,7 +72,7 @@ public class PropertyRentalResourceTest {
   public void whenGettingRentalWithID_thenShouldGetRentalWithIDFromService() {
     propertyRentalResource.getRental(SOME_RENTAL_ID);
 
-    verify(rentalService).getRental(RentalIdentifier.from(SOME_RENTAL_ID));
+    verify(rentalService).getRental(RentalIdentifier.fromString(SOME_RENTAL_ID));
   }
 
   @Test

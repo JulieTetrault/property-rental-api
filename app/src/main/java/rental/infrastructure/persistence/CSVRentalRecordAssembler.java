@@ -12,7 +12,7 @@ public class CSVRentalRecordAssembler {
 
   public Rental fromRecord(CSVRecord csvRentalRecord) {
     return new Rental(
-        RentalIdentifier.from(csvRentalRecord.get("id")),
+        RentalIdentifier.fromString(csvRentalRecord.get("id")),
         csvRentalRecord.get("city"),
         csvRentalRecord.get("postalcode"),
         new BigDecimal(csvRentalRecord.get("price")),

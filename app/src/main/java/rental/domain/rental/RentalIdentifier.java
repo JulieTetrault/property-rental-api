@@ -11,8 +11,12 @@ public class RentalIdentifier {
     this.identifier = UUID.fromString(identifier);
   }
 
-  public static RentalIdentifier from(String identifier) {
-    return new RentalIdentifier(identifier);
+  public static RentalIdentifier fromString(String identifier) {
+    try {
+      return new RentalIdentifier(identifier);
+    } catch (Exception e) {
+      throw new InvalidRentalIdentifierException();
+    }
   }
 
   @Override

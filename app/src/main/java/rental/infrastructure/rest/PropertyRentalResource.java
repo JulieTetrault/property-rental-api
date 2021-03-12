@@ -45,7 +45,7 @@ public class PropertyRentalResource {
   @GET
   @Path("{id}")
   public Response getRental(@PathParam("id") String rentalId) {
-    RentalDTO rentalDTO = rentalService.getRental(RentalIdentifier.from(rentalId));
+    RentalDTO rentalDTO = rentalService.getRental(RentalIdentifier.fromString(rentalId));
 
     PropertyRentalResponse propertyRentalResponse = new PropertyRentalResponse(rentalDTO);
 

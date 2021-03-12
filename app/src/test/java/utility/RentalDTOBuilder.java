@@ -7,7 +7,7 @@ import rental.domain.rental.RentalRating;
 
 public class RentalDTOBuilder {
 
-  private static final RentalIdentifier SOME_ID = RentalIdentifier.from(new Faker().internet().uuid());
+  private static final RentalIdentifier SOME_ID = RentalIdentifier.fromString(new Faker().internet().uuid());
   private static final String SOME_CITY = new Faker().address().city();
   private static final String SOME_POSTAL_CODE = new Faker().address().zipCode();
   private static final Integer SOME_PRICE = new Faker().random().nextInt(50, 300);

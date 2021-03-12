@@ -11,13 +11,13 @@ public enum RentalRating {
 
   public static RentalRating fromString(String rentalRating) {
     try {
-      return allRentalRatingValues[Integer.parseInt(rentalRating)];
+      return allRentalRatingValues[Integer.parseInt(rentalRating) - 1];
     } catch (Exception e) {
       return null;
     }
   }
 
   public Integer toInt() {
-    return this.ordinal();
+    return this.ordinal() + 1;
   }
 }

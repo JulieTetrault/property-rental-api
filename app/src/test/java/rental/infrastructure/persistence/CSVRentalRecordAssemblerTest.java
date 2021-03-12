@@ -36,7 +36,7 @@ public class CSVRentalRecordAssemblerTest {
   }
 
   private void assertRentalCorrectlyAssembled(CSVRecord csvRentalRecord, Rental rental) {
-    assertEquals(RentalIdentifier.from(csvRentalRecord.get("id")), rental.getId());
+    assertEquals(RentalIdentifier.fromString(csvRentalRecord.get("id")), rental.getId());
     assertEquals(csvRentalRecord.get("city"), rental.getCity());
     assertEquals(csvRentalRecord.get("postalcode"), rental.getPostalCode());
     assertEquals(new BigDecimal(csvRentalRecord.get("price")), rental.getPrice());

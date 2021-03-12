@@ -34,7 +34,7 @@ public class CSVRentalRepository implements RentalRepository {
   @Override
   public Rental fetch(RentalIdentifier rentalId) {
     Optional<CSVRecord> csvRentalRecord =
-        csvRentalRecords.stream().filter(record -> RentalIdentifier.from(record.get("id"))
+        csvRentalRecords.stream().filter(record -> RentalIdentifier.fromString(record.get("id"))
             .equals(rentalId)).findFirst();
 
     if (csvRentalRecord.isPresent()) {
