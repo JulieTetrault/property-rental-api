@@ -5,13 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.apache.commons.csv.CSVRecord;
 import rental.domain.rental.Rental;
+import rental.domain.rental.RentalIdentifier;
 import rental.domain.rental.RentalRating;
 
 public class CSVRentalRecordAssembler {
 
   public Rental fromRecord(CSVRecord csvRentalRecord) {
     return new Rental(
-        csvRentalRecord.get("id"),
+        RentalIdentifier.from(csvRentalRecord.get("id")),
         csvRentalRecord.get("city"),
         csvRentalRecord.get("postalcode"),
         new BigDecimal(csvRentalRecord.get("price")),

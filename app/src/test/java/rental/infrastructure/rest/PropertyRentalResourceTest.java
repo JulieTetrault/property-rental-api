@@ -14,6 +14,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import rental.application.RentalDTO;
 import rental.application.RentalService;
+import rental.domain.rental.RentalIdentifier;
 import rental.domain.rental.RentalQuery;
 import utility.RentalDTOBuilder;
 
@@ -35,7 +36,7 @@ public class PropertyRentalResourceTest {
   public void setUp() {
     rentalService = mock(RentalService.class);
     when(rentalService.getRentals(any())).thenReturn(SOME_RENTALS_DTO);
-    when(rentalService.getRental(SOME_RENTAL_ID)).thenReturn(SOME_RENTAL_DTO);
+    when(rentalService.getRental(RentalIdentifier.from(SOME_RENTAL_ID))).thenReturn(SOME_RENTAL_DTO);
 
     propertyRentalResource = new PropertyRentalResource(rentalService);
   }
@@ -71,7 +72,7 @@ public class PropertyRentalResourceTest {
   public void whenGettingRentalWithID_thenShouldGetRentalWithIDFromService() {
     propertyRentalResource.getRental(SOME_RENTAL_ID);
 
-    verify(rentalService).getRental(SOME_RENTAL_ID);
+    verify(rentalService).getRental(RentalIdentifier.from(SOME_RENTAL_ID));
   }
 
   @Test

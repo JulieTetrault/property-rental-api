@@ -3,11 +3,12 @@ package utility;
 import com.github.javafaker.Faker;
 import java.math.BigDecimal;
 import rental.domain.rental.Rental;
+import rental.domain.rental.RentalIdentifier;
 import rental.domain.rental.RentalRating;
 
 public class RentalBuilder {
 
-  private static final String SOME_ID = new Faker().internet().uuid();
+  private static final RentalIdentifier SOME_ID = RentalIdentifier.from(new Faker().internet().uuid());
   private static final String SOME_CITY = new Faker().address().city();
   private static final String SOME_POSTAL_CODE = new Faker().address().zipCode();
   private static final BigDecimal SOME_PRICE = new BigDecimal(30);
@@ -17,7 +18,7 @@ public class RentalBuilder {
   private static final RentalRating SOME_RATING = RentalRating.FOUR;
   private static final String SOME_DESCRIPTION = new Faker().lorem().paragraph();
 
-  private String id;
+  private RentalIdentifier id;
   private String city;
   private String postalCode;
   private BigDecimal price;

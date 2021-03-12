@@ -17,7 +17,7 @@ public class MinimalPropertyRentalResponse {
 
   @JsonCreator
   public MinimalPropertyRentalResponse(RentalDTO rentalDTO) {
-    this.id = rentalDTO.id;
+    this.id = rentalDTO.id.toString();
     this.postalCode = rentalDTO.postalCode;
     this.price = rentalDTO.price;
     this.nbBeds = rentalDTO.nbBeds;
@@ -26,11 +26,7 @@ public class MinimalPropertyRentalResponse {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-
-    if (o == null || getClass() != o.getClass()) {
+    if (!(o instanceof MinimalPropertyRentalResponse)) {
       return false;
     }
 

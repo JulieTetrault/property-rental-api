@@ -11,6 +11,7 @@ import org.apache.commons.csv.CSVRecord;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import rental.domain.rental.Rental;
+import rental.domain.rental.RentalIdentifier;
 import rental.domain.rental.RentalRating;
 import utility.CSVRecordBuilder;
 
@@ -35,7 +36,7 @@ public class CSVRentalRecordAssemblerTest {
   }
 
   private void assertRentalCorrectlyAssembled(CSVRecord csvRentalRecord, Rental rental) {
-    assertEquals(csvRentalRecord.get("id"), rental.getId());
+    assertEquals(RentalIdentifier.from(csvRentalRecord.get("id")), rental.getId());
     assertEquals(csvRentalRecord.get("city"), rental.getCity());
     assertEquals(csvRentalRecord.get("postalcode"), rental.getPostalCode());
     assertEquals(new BigDecimal(csvRentalRecord.get("price")), rental.getPrice());
