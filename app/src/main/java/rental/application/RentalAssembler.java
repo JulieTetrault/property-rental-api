@@ -7,7 +7,7 @@ import rental.domain.rental.Rental;
 public class RentalAssembler {
 
   public RentalDTO toDto(Rental rental) {
-    return new RentalDTO(rental.getId(), rental.getCity(), rental.getPostalCode(), rental.getPrice().intValue(),
+    return new RentalDTO(rental.getId(), rental.getCity(), rental.getPostalCode(), rental.getPrice().toInt(),
         rental.getNbBeds(), rental.getNbBaths(), rental.getOwner(), rental.getRating(), rental.getDescription());
   }
 

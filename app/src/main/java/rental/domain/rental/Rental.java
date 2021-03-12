@@ -1,20 +1,20 @@
 package rental.domain.rental;
 
-import java.math.BigDecimal;
+import rental.domain.Money;
 
 public class Rental {
 
   private RentalIdentifier id;
   private String city;
   private String postalCode;
-  private BigDecimal price;
+  private Money price;
   private Integer nbBeds;
   private Integer nbBaths;
   private String owner;
   private RentalRating rating;
   private String description;
 
-  public Rental(RentalIdentifier id, String city, String postalCode, BigDecimal price, Integer nbBeds, Integer nbBaths,
+  public Rental(RentalIdentifier id, String city, String postalCode, Money price, Integer nbBeds, Integer nbBaths,
                 String owner, RentalRating rating, String description) {
     this.id = id;
     this.city = city;
@@ -39,7 +39,7 @@ public class Rental {
     return this.postalCode;
   }
 
-  public BigDecimal getPrice() {
+  public Money getPrice() {
     return this.price;
   }
 

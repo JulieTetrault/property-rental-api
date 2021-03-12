@@ -1,7 +1,7 @@
 package utility;
 
 import com.github.javafaker.Faker;
-import java.math.BigDecimal;
+import rental.domain.Money;
 import rental.domain.rental.Rental;
 import rental.domain.rental.RentalIdentifier;
 import rental.domain.rental.RentalRating;
@@ -11,7 +11,7 @@ public class RentalBuilder {
   private static final RentalIdentifier SOME_ID = RentalIdentifier.fromString(new Faker().internet().uuid());
   private static final String SOME_CITY = new Faker().address().city();
   private static final String SOME_POSTAL_CODE = new Faker().address().zipCode();
-  private static final BigDecimal SOME_PRICE = new BigDecimal(30);
+  private static final Money SOME_PRICE = new Money(30);
   private static final Integer SOME_NB_BEDS = new Faker().random().nextInt(1, 10);
   private static final Integer SOME_NB_BATHS = new Faker().random().nextInt(1, 10);
   private static final String SOME_OWNER = new Faker().name().fullName();
@@ -21,7 +21,7 @@ public class RentalBuilder {
   private RentalIdentifier id;
   private String city;
   private String postalCode;
-  private BigDecimal price;
+  private Money price;
   private Integer nbBeds;
   private Integer nbBaths;
   private String owner;
@@ -46,7 +46,7 @@ public class RentalBuilder {
     return this;
   }
 
-  public RentalBuilder withPrice(BigDecimal price) {
+  public RentalBuilder withPrice(Money price) {
     this.price = price;
 
     return this;

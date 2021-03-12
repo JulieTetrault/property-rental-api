@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 import com.github.javafaker.Faker;
-import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
+import rental.domain.Money;
 import utility.RentalBuilder;
 
 public class RentalQueryTest {
@@ -43,7 +43,7 @@ public class RentalQueryTest {
   @Test
   public void givenRentalWithPriceBetweenPriceRange_whenApplyingRentalQuery_thenShouldReturnTrue() {
     Rental rental = new RentalBuilder().withPrice(
-        BigDecimal.valueOf(new Faker().number().numberBetween(SOME_MINIMUM_PRICE, SOME_MAXIMUM_PRICE))).build();
+        new Money(new Faker().number().numberBetween(SOME_MINIMUM_PRICE, SOME_MAXIMUM_PRICE))).build();
     RentalQuery rentalQuery =
         new RentalQuery.RentalQueryBuilder().withPriceRange(SOME_MINIMUM_PRICE, SOME_MAXIMUM_PRICE).build();
 
@@ -52,7 +52,7 @@ public class RentalQueryTest {
 
   @Test
   public void givenRentalWithPriceEqualToPriceRangeLowerLimit_whenApplyingRentalQuery_thenShouldReturnFalse() {
-    Rental rental = new RentalBuilder().withPrice(BigDecimal.valueOf(SOME_MINIMUM_PRICE)).build();
+    Rental rental = new RentalBuilder().withPrice(new Money(SOME_MINIMUM_PRICE)).build();
     RentalQuery rentalQuery =
         new RentalQuery.RentalQueryBuilder().withPriceRange(SOME_MINIMUM_PRICE, SOME_MAXIMUM_PRICE).build();
 
@@ -61,7 +61,7 @@ public class RentalQueryTest {
 
   @Test
   public void givenRentalWithPriceEqualToPriceRangeUpperLimit_whenApplyingRentalQuery_thenShouldReturnFalse() {
-    Rental rental = new RentalBuilder().withPrice(BigDecimal.valueOf(SOME_MAXIMUM_PRICE)).build();
+    Rental rental = new RentalBuilder().withPrice(new Money(SOME_MAXIMUM_PRICE)).build();
     RentalQuery rentalQuery =
         new RentalQuery.RentalQueryBuilder().withPriceRange(SOME_MINIMUM_PRICE, SOME_MAXIMUM_PRICE).build();
 
@@ -70,7 +70,7 @@ public class RentalQueryTest {
 
   @Test
   public void givenRentalWithPriceUnderPriceRange_whenApplyingRentalQuery_thenShouldReturnFalse() {
-    Rental rental = new RentalBuilder().withPrice(BigDecimal.valueOf(SOME_MINIMUM_PRICE - 1)).build();
+    Rental rental = new RentalBuilder().withPrice(new Money(SOME_MINIMUM_PRICE - 1)).build();
     RentalQuery rentalQuery =
         new RentalQuery.RentalQueryBuilder().withPriceRange(SOME_MINIMUM_PRICE, SOME_MAXIMUM_PRICE).build();
 
@@ -79,7 +79,7 @@ public class RentalQueryTest {
 
   @Test
   public void givenRentalWithPriceAbovePriceRange_whenApplyingRentalQuery_thenShouldReturnFalse() {
-    Rental rental = new RentalBuilder().withPrice(BigDecimal.valueOf(SOME_MAXIMUM_PRICE + 1)).build();
+    Rental rental = new RentalBuilder().withPrice(new Money(SOME_MAXIMUM_PRICE + 1)).build();
     RentalQuery rentalQuery =
         new RentalQuery.RentalQueryBuilder().withPriceRange(SOME_MINIMUM_PRICE, SOME_MAXIMUM_PRICE).build();
 
