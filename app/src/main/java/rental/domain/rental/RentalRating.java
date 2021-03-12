@@ -13,7 +13,7 @@ public enum RentalRating {
     try {
       return allRentalRatingValues[Integer.parseInt(rentalRating) - 1];
     } catch (Exception e) {
-      return null;
+      throw new InvalidRentalRatingException(rentalRating);
     }
   }
 

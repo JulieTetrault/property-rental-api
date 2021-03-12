@@ -15,7 +15,7 @@ public class RentalIdentifier {
     try {
       return new RentalIdentifier(identifier);
     } catch (Exception e) {
-      throw new InvalidRentalIdentifierException();
+      throw new InvalidRentalIdentifierException(identifier);
     }
   }
 
