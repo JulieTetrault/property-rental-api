@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.apache.commons.csv.CSVRecord;
 import rental.domain.rental.Rental;
+import rental.domain.rental.RentalRating;
 
 public class CSVRentalRecordAssembler {
 
@@ -17,7 +18,7 @@ public class CSVRentalRecordAssembler {
         Integer.parseInt(csvRentalRecord.get("nb_beds")),
         Integer.parseInt(csvRentalRecord.get("nb_baths")),
         csvRentalRecord.get("owner"),
-        Integer.parseInt(csvRentalRecord.get("rating")),
+        RentalRating.fromString(csvRentalRecord.get("rating")),
         csvRentalRecord.get("description")
     );
   }

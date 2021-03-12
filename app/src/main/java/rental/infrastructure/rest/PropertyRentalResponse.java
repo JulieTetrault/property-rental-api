@@ -28,7 +28,7 @@ public class PropertyRentalResponse {
     this.owner = rentalDTO.owner;
     this.nbBeds = rentalDTO.nbBeds;
     this.nbBaths = rentalDTO.nbBaths;
-    this.rating = rentalDTO.rating;
+    this.rating = rentalDTO.rating.toInt();
   }
 
   @Override

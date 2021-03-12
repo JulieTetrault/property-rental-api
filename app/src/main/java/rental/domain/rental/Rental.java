@@ -11,11 +11,11 @@ public class Rental {
   private Integer nbBeds;
   private Integer nbBaths;
   private String owner;
-  private Integer rating;
+  private RentalRating rating;
   private String description;
 
   public Rental(String id, String city, String postalCode, BigDecimal price, Integer nbBeds, Integer nbBaths,
-                String owner, Integer rating, String description) {
+                String owner, RentalRating rating, String description) {
     this.id = id;
     this.city = city;
     this.postalCode = postalCode;
@@ -55,7 +55,7 @@ public class Rental {
     return this.owner;
   }
 
-  public Integer getRating() {
+  public RentalRating getRating() {
     return this.rating;
   }
 

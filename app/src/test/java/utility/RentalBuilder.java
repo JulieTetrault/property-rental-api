@@ -3,6 +3,7 @@ package utility;
 import com.github.javafaker.Faker;
 import java.math.BigDecimal;
 import rental.domain.rental.Rental;
+import rental.domain.rental.RentalRating;
 
 public class RentalBuilder {
 
@@ -13,7 +14,7 @@ public class RentalBuilder {
   private static final Integer SOME_NB_BEDS = new Faker().random().nextInt(1, 10);
   private static final Integer SOME_NB_BATHS = new Faker().random().nextInt(1, 10);
   private static final String SOME_OWNER = new Faker().name().fullName();
-  private static final Integer SOME_RATING = 2;
+  private static final RentalRating SOME_RATING = RentalRating.FOUR;
   private static final String SOME_DESCRIPTION = new Faker().lorem().paragraph();
 
   private String id;
@@ -23,7 +24,7 @@ public class RentalBuilder {
   private Integer nbBeds;
   private Integer nbBaths;
   private String owner;
-  private Integer rating;
+  private RentalRating rating;
   private String description;
 
   public RentalBuilder() {

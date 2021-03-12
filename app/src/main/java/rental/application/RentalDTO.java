@@ -1,5 +1,7 @@
 package rental.application;
 
+import rental.domain.rental.RentalRating;
+
 public class RentalDTO {
 
   public final String id;
@@ -9,11 +11,11 @@ public class RentalDTO {
   public final Integer nbBeds;
   public final Integer nbBaths;
   public final String owner;
-  public final Integer rating;
+  public final RentalRating rating;
   public final String description;
 
   public RentalDTO(String id, String city, String postalCode, Integer price, Integer nbBeds, Integer nbBaths,
-                   String owner, Integer rating,
+                   String owner, RentalRating rating,
                    String description) {
     this.id = id;
     this.city = city;

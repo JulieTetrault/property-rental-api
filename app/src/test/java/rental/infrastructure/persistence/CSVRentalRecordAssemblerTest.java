@@ -11,6 +11,7 @@ import org.apache.commons.csv.CSVRecord;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import rental.domain.rental.Rental;
+import rental.domain.rental.RentalRating;
 import utility.CSVRecordBuilder;
 
 public class CSVRentalRecordAssemblerTest {
@@ -41,7 +42,7 @@ public class CSVRentalRecordAssemblerTest {
     assertEquals(Integer.parseInt(csvRentalRecord.get("nb_beds")), rental.getNbBeds());
     assertEquals(Integer.parseInt(csvRentalRecord.get("nb_baths")), rental.getNbBaths());
     assertEquals(csvRentalRecord.get("owner"), rental.getOwner());
-    assertEquals(Integer.parseInt(csvRentalRecord.get("rating")), rental.getRating());
+    assertEquals(RentalRating.fromString(csvRentalRecord.get("rating")), rental.getRating());
     assertEquals(csvRentalRecord.get("description"), rental.getDescription());
   }
 

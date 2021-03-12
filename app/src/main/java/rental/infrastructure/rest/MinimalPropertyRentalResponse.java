@@ -21,7 +21,7 @@ public class MinimalPropertyRentalResponse {
     this.postalCode = rentalDTO.postalCode;
     this.price = rentalDTO.price;
     this.nbBeds = rentalDTO.nbBeds;
-    this.rating = rentalDTO.rating;
+    this.rating = rentalDTO.rating.toInt();
   }
 
   @Override
