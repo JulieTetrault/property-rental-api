@@ -39,3 +39,20 @@ We use the [Checkstyle](https://checkstyle.org/) plugin to check the validity of
 ```{bash}
 mvn checkstyle:checkstyle
 ```
+
+### Routes
+
+#### GET /rentals
+
+The supported query parameters are:
+
+- `min_nb_beds`: filters all rentals with a number of beds above given minimum
+- `postalcode`: filters all rentals with a postal code matching given pattern
+- `min_price`: filters all rentals with a price above given minimum
+- `max_price`: filters all rentals with a price under given minimum
+
+It is possible to apply multiple filters at the same time:
+
+`GET /beds?min_nb_beds=2&postalcode=G3A__4&min_price=100&max_price=300`
+
+#### GET /rentals/{id}
