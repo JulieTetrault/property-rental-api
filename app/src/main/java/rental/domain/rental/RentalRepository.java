@@ -8,3 +8,4 @@ public interface RentalRepository {
 
   Rental fetch(String rentalId);
 }
+

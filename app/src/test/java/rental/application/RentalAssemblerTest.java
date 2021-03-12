@@ -28,10 +28,10 @@ public class RentalAssemblerTest {
   public void whenAssemblingRentalDTOFromRental_thenShouldReturnCorrespondingRentalDTO() {
     RentalDTO rentalDTO = rentalAssembler.toDto(SOME_RENTAL);
 
-    assertRentalDTOCorrectlyMapped(SOME_RENTAL, rentalDTO);
+    assertRentalDTOCorrectlyAssembled(SOME_RENTAL, rentalDTO);
   }
 
-  private void assertRentalDTOCorrectlyMapped(Rental rental, RentalDTO rentalDTO) {
+  private void assertRentalDTOCorrectlyAssembled(Rental rental, RentalDTO rentalDTO) {
     assertEquals(rental.getId(), rentalDTO.id);
     assertEquals(rental.getCity(), rentalDTO.city);
     assertEquals(rental.getPostalCode(), rentalDTO.postalCode);
@@ -47,12 +47,12 @@ public class RentalAssemblerTest {
   public void whenAssemblingRentalsDTOFromRentals_thenShouldReturnCorrespondingRentalsDTO() {
     List<RentalDTO> rentalsDTO = rentalAssembler.toDto(SOME_RENTALS);
 
-    assertRentalsDTOCorrectlyMapped(rentalsDTO);
+    assertRentalsDTOCorrectlyAssembled(rentalsDTO);
   }
 
-  private void assertRentalsDTOCorrectlyMapped(List<RentalDTO> rentalsDTO) {
+  private void assertRentalsDTOCorrectlyAssembled(List<RentalDTO> rentalsDTO) {
     for (int index = 0; index < rentalsDTO.size(); index++) {
-      assertRentalDTOCorrectlyMapped(RentalAssemblerTest.SOME_RENTALS.get(index), rentalsDTO.get(index));
+      assertRentalDTOCorrectlyAssembled(RentalAssemblerTest.SOME_RENTALS.get(index), rentalsDTO.get(index));
     }
   }
 }
