@@ -55,4 +55,59 @@ It is possible to apply multiple filters at the same time:
 
 `GET /beds?min_nb_beds=2&postalcode=G3A__4&min_price=100&max_price=300`
 
+##### Response
+
+- 200 OK
+  ```{json}
+  [
+    {
+      id: "288be150-c451-42c8-8f64-61be45237203",
+      price: 177,
+      rating: 5,
+      postalcode: "G7A4X2",
+      nb_beds: 1
+    },
+    {
+      id: "eae59477-fab2-4db5-a7f8-1d9e23f722d6",
+      price: 183,
+      rating: 3,
+      postalcode: "G3T0D1",
+      nb_beds: 5
+    },
+     ...
+  ]
+  ```
+
 #### GET /rentals/{id}
+
+##### Responses
+
+- 200 OK
+  ```{json}
+  {
+    city: "Lavaltrie",
+    description: "1 bed/1 bath renovated condo in a vibrant community of Lavaltrie with a balcony and hardwood floor.",
+    price: 177,
+    owner: "Aeriell Pippin",
+    rating: 5,
+    postalcode: "G7A4X2",
+    nb_beds: 1,
+    nb_baths: 1
+  }
+  ```
+- 400 Bad Request
+    - If the given rental ID is not a valid format: 
+      ```{json}
+      {
+        code: "INVALID_RENTAL_ID",
+        message: "Rental ID 288be1 is not a valid format"
+      }
+      ```
+- 404 Not Found
+  - If the rental does not exist
+    ```{json}
+    {
+      code: "RENTAL_NOT_FOUND",
+      message: "Rental 288be160-c451-42c8-8f64-61be45237203 not found"
+    }
+    ```
