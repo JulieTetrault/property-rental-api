@@ -30,15 +30,18 @@ public class RentalQuery {
   }
 
   private boolean isPriceValid(Rental rental) {
+    boolean isMinPriceValid = true;
+    boolean isMaxPriceValid = true;
+
     if (minPrice != null) {
-      return rental.getPrice().intValue() > minPrice;
+      isMinPriceValid = rental.getPrice().intValue() > minPrice;
     }
 
     if (maxPrice != null) {
-      return rental.getPrice().intValue() < maxPrice;
+      isMaxPriceValid = rental.getPrice().intValue() < maxPrice;
     }
 
-    return true;
+    return isMinPriceValid && isMaxPriceValid;
   }
 
   private boolean isPostalCodeValid(Rental rental) {

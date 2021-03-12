@@ -16,15 +16,15 @@ public class RentalBuilder {
   private static final Integer SOME_RATING = 2;
   private static final String SOME_DESCRIPTION = new Faker().lorem().paragraph();
 
-  private final String id;
-  private final String city;
-  private final String postalCode;
-  private final BigDecimal price;
-  private final Integer nbBeds;
-  private final Integer nbBaths;
-  private final String owner;
-  private final Integer rating;
-  private final String description;
+  private String id;
+  private String city;
+  private String postalCode;
+  private BigDecimal price;
+  private Integer nbBeds;
+  private Integer nbBaths;
+  private String owner;
+  private Integer rating;
+  private String description;
 
   public RentalBuilder() {
     this.id = SOME_ID;
@@ -36,6 +36,24 @@ public class RentalBuilder {
     this.owner = SOME_OWNER;
     this.rating = SOME_RATING;
     this.description = SOME_DESCRIPTION;
+  }
+
+  public RentalBuilder withPostalCode(String postalCode) {
+    this.postalCode = postalCode;
+
+    return this;
+  }
+
+  public RentalBuilder withPrice(BigDecimal price) {
+    this.price = price;
+
+    return this;
+  }
+
+  public RentalBuilder withNbBeds(Integer nbBeds) {
+    this.nbBeds = nbBeds;
+
+    return this;
   }
 
   public Rental build() {
