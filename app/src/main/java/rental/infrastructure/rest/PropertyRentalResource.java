@@ -28,6 +28,7 @@ public class PropertyRentalResource {
                              @QueryParam("max_price") Integer maxPrice) {
     RentalQuery rentalQuery =
         new RentalQuery.RentalQueryBuilder().witMinNbBeds(minNbBeds).withPriceRange(minPrice, maxPrice)
+            .withPostalCodePattern(postalCode)
             .build();
 
     List<RentalDTO> rentalDTOs = rentalService.getAllRentals(rentalQuery);
